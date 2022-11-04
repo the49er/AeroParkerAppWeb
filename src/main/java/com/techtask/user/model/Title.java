@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 @AllArgsConstructor
 public enum Title {
-    EMPTY("Choose your title"),
+    EMPTY("Prefer not to say"),
     MR("Mr"),
     MRS("Mrs"),
     MS("Ms"),

@@ -6,7 +6,8 @@
     <link crossorigin="anonymous"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          rel="stylesheet">
+          rel="stylesheet"
+    >
 </head>
 <body>
 
@@ -25,9 +26,11 @@
 
                 <div class="form-group">
                     <label class="control-label" for="title"> Title </label>
-                    <select autofocus="autofocus" class="form-control" id="title" th:field="*{title}" required>
-                    <option th:each="title : ${T(com.techtask.user.model.Title).values()}"
-                            th:value="${title}" th:text="${title.getTitleValue()}"></option>>                            >
+                    <select autofocus="autofocus" class="form-control" id="title" required th:field="*{title}">
+                        <option th:each="title : ${T(com.techtask.user.model.Title).values()}"
+                                th:text="${title.getTitleValue()}" th:value="${title}">
+                        </option>
+                        > >
                     </select>
                 </div>
 
@@ -35,65 +38,84 @@
                 <div class="form-group">
                     <label class="control-label" for="firstName"> First Name </label>
                     <input autofocus="autofocus" class="form-control" id="firstName"
-                           required th:field="*{firstName}"/>
+                           maxlength="255" required th:field="*{firstName}"
+                    />
                 </div>
 
 
                 <div class="form-group">
-                    <label class="control-label" for="lastName"> Second Name </label> <input
-                        autofocus="autofocus" class="form-control" id="lastName"
-                        required th:field="*{lastName}"/>
+                    <label class="control-label" for="lastName"> Second Name </label>
+                    <input
+                            autofocus="autofocus" class="form-control" id="lastName"
+                            maxlength="255" required th:field="*{lastName}"
+                    />
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="addressLine1"> Address Line 1 </label> <input
-                        autofocus="autofocus" class="form-control" id="addressLine1"
-                        required th:field="*{addressLine1}"/>
+                    <label class="control-label" for="addressLine1"> Address Line 1 </label>
+                    <input
+                            autofocus="autofocus" class="form-control" id="addressLine1"
+                            maxlength="255" minlength="8" required th:field="*{addressLine1}"/>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="addressLine2"> Address Line 2 </label> <input
-                        autofocus="autofocus" class="form-control" id="addressLine2"
-                        th:field="*{addressLine2}"/>
+                    <label class="control-label" for="addressLine2"> Address Line 2 (optional)</label>
+                    <input
+                            autofocus="autofocus" class="form-control" id="addressLine2"
+                            maxlength="255" th:field="*{addressLine2}"
+                    />
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="city"> City </label> <input
-                        autofocus="autofocus" class="form-control" id="city"
-                        th:field="*{city}"/>
+                    <label class="control-label" for="city"> City (optional) </label>
+                    <input
+                            autofocus="autofocus" class="form-control" id="city"
+                            maxlength="255" th:field="*{city}"
+                    />
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="postcode"> Postcode </label> <input
-                        autofocus="autofocus" class="form-control" id="postcode"
-                        required th:field="*{postcode}"/>
+                    <label class="control-label" for="postcode"> Postcode </label>
+                    <input
+                            autofocus="autofocus" class="form-control" id="postcode"
+                            maxlength="10" minlength="6" required th:field="*{postcode}"
+                    />
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="phoneNumber"> Phone number </label> <input
-                        autofocus="autofocus" class="form-control" id="phoneNumber"
-                        th:field="*{phoneNumber}"/>
+                    <label class="control-label" for="phoneNumber"> Phone number (optional)</label>
+                    <input
+                            autofocus="autofocus" class="form-control" id="phoneNumber"
+                            th:field="*{phoneNumber}"
+                    />
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="email"> Email </label> <input
-                        autofocus="autofocus" class="form-control" id="email" required th:field="*{email}"
-                        type="email"/>
+                    <label class="control-label" for="email"> Email </label>
+                    <br>
+                    <input
+                            autofocus="autofocus" class="form-control" id="email" required th:field="*{email}"
+                            type="email"
+                    />
                     <br/>
                     <span class="alert alert-danger" th:errors="*{email}" th:if="${#fields.hasErrors('email')}">E-mail error</span>
                 </div>
 
 
                 <div class="form-group">
-                    <label class="control-label" for="password"> Password </label> <input
-                        autofocus="autofocus" class="form-control" id="password"
-                        required th:field="*{password}" type="password"/>
+                    <label class="control-label" for="password"> Password </label>
+                    <br>
+                    <input
+                            autofocus="autofocus" class="form-control" id="password"
+                            required th:field="*{password}" type="password"
+                    />
                     <br/>
                     <span class="alert alert-danger" th:errors="*{password}" th:if="${#fields.hasErrors('password')}">Password error</span>
                 </div>
 
 
                 <div class="form-group">
+                    <br>
                     <button class="btn btn-success" type="submit">Register</button>
                     <br/>
                     <span>Existing customer? <a th:href="@{/login}">  Sign in  </a></span>

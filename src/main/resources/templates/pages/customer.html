@@ -34,20 +34,20 @@ tr:nth-child(even){background-color: #f2f2f2}
     <caption>List of customers</caption>
     <table border=1 style="border-spacing : 10px">
         <thead>
-        <tr>
-            <th>ID</th>
-            <th>Time</th>
-            <th>Title</th>
-            <th>Email</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Address 1</th>
-            <th>Address 2</th>
-            <th>City</th>
-            <th>Postcode</th>
-            <th>Phone Number</th>
-            <th>Password</th>
-        </tr>
+            <tr>
+                <th>ID</th>
+                <th>Time</th>
+                <th>Title</th>
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address line 1</th>
+                <th>Address line 2</th>
+                <th>City</th>
+                <th>Postcode</th>
+                <th>Phone Number</th>
+                <th>Password</th>
+            </tr>
         </thead>
 
         <tr th:each="item : ${allUsers}">
@@ -63,8 +63,6 @@ tr:nth-child(even){background-color: #f2f2f2}
             <td th:utext="${item.postcode}">...</td>
             <td th:utext="${item.phoneNumber}">...</td>
             <td th:utext="${item.password}">...</td>
-
-
         </tr>
     </table>
 </div>

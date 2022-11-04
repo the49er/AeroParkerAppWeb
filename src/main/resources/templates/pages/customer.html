@@ -3,35 +3,37 @@
       xsi:schemaLocation="http://www.thymeleaf.org ">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>Customers</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-          rel="stylesheet"
+    <link crossorigin="anonymous"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
           integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-          crossorigin="anonymous">
+          rel="stylesheet">
     <style>
-        .bx-content {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-        }
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
 
-        .news-content {
-            overflow: hidden;
-            width: 100ch;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-        }
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
 
     </style>
 </head>
 <body>
-
-<div>
-    <table border="1">
+<div class="mt-4 pt-2 " align="right">
+    <a th:href="@{/logout}" class="btn btn-sm btn-info">Log out</a>
+</div>
+<div style="overflow-x:auto;">
+    <caption>List of customers</caption>
+    <table border=1 style="border-spacing : 10px">
+        <thead>
         <tr>
             <th>ID</th>
             <th>Time</th>
@@ -46,6 +48,7 @@
             <th>Phone Number</th>
             <th>Password</th>
         </tr>
+        </thead>
 
         <tr th:each="item : ${allUsers}">
             <td th:utext="${item.id}">...</td>
@@ -65,8 +68,6 @@
         </tr>
     </table>
 </div>
-
-
 
 
 </body>

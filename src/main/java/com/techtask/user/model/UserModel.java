@@ -18,6 +18,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -39,7 +40,7 @@ public class UserModel {
 
     @Column(name = "registered")
     @CreationTimestamp
-    private LocalDate registered;
+    private LocalDateTime registered;
 
     @Column(name = "email_address",unique=true)
     @Email(message = "Please enter a valid e-mail address")

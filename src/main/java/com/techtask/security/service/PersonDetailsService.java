@@ -21,10 +21,10 @@ public class PersonDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<UserModel> user = ofNullable(userRepository.findByEmail(email));
+        Optional<UserModel> userModel = ofNullable(userRepository.findByEmail(email));
 
-        if (user.isEmpty()) throw new UsernameNotFoundException("User not found");
+        if (userModel.isEmpty()) throw new UsernameNotFoundException("User not found");
 
-        return new PersonDetails(user.get());
+        return new PersonDetails(userModel.get());
     }
 }

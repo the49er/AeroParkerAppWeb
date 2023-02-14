@@ -32,7 +32,10 @@ tr:nth-child(even){background-color: #f2f2f2}
 </div>
 <div style="overflow-x:auto;">
     <caption>List of customers</caption>
-    <table border=1 style="border-spacing : 10px">
+
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
+    <table border=1 style="border-spacing : 10px" id="myTable">
         <thead>
             <tr>
                 <th>ID</th>
@@ -47,26 +50,56 @@ tr:nth-child(even){background-color: #f2f2f2}
                 <th>Postcode</th>
                 <th>Phone Number</th>
                 <th>Password</th>
+                <th>Delete</th>
             </tr>
         </thead>
 
         <tr th:each="item : ${allUsers}">
-            <td th:utext="${item.id}">...</td>
-            <td th:utext="${item.registered}">...</td>
-            <td th:utext="${item.title}">...</td>
-            <td th:utext="${item.email}">...</td>
-            <td th:utext="${item.firstName}">...</td>
-            <td th:utext="${item.lastName}">...</td>
-            <td th:utext="${item.addressLine1}">...</td>
-            <td th:utext="${item.addressLine2}">...</td>
-            <td th:utext="${item.city}">...</td>
-            <td th:utext="${item.postcode}">...</td>
-            <td th:utext="${item.phoneNumber}">...</td>
-            <td th:utext="${item.password}">...</td>
+            <td href="#" th:utext="${item.id}">...</td>
+            <td href="#" th:utext="${item.registered}">...</td>
+            <td href="#" th:utext="${item.title}">...</td>
+            <td href="#" th:utext="${item.email}">...</td>
+            <td href="#" th:utext="${item.firstName}">...</td>
+            <td href="#" th:utext="${item.lastName}">...</td>
+            <td href="#" th:utext="${item.addressLine1}">...</td>
+            <td href="#" th:utext="${item.addressLine2}">...</td>
+            <td href="#" th:utext="${item.city}">...</td>
+            <td href="#" th:utext="${item.postcode}">...</td>
+            <td href="#" th:utext="${item.phoneNumber}">...</td>
+            <td href="#" th:utext="${item.password}">...</td>
+            <td>
+                <form th:action="'/pages/delete/'+ ${item.id}" method="post"></a>
+                    <button onclick="return confirm('Are you sure you want to delete User?')">Delete</button>
+                </form>
+            </td>
         </tr>
     </table>
 </div>
 
+
+<script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[4];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
 
 </body>
 </html>

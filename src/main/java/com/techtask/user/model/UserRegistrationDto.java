@@ -1,10 +1,9 @@
 package com.techtask.user.model;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Data
@@ -18,10 +17,10 @@ public class UserRegistrationDto {
 
 	private String title;
 
-	@Size(min = 2, max = 255, message = "This field cannot be empty. Min 2, max 255 symbols")
+	@Size(min = 2, max = 50, message = "This field cannot be empty. Min 2, max 255 symbols")
 	private String firstName;
 
-	@Size(min = 2, max = 255, message = "This field cannot be empty. Min 2, max 255 symbols")
+	@Size(min = 2, max = 50, message = "This field cannot be empty. Min 2, max 255 symbols")
 	private String lastName;
 
 	@Size(min = 8, max = 255, message = "This field cannot be empty. Min 8, max 255 symbols")
@@ -33,6 +32,8 @@ public class UserRegistrationDto {
 
 	@Size(min = 6, max = 10, message = "This field cannot be empty. Min 6, max 10 symbols")
 	private String postcode;
+
+	@Size(max = 20)
 
 	private String phoneNumber;
 

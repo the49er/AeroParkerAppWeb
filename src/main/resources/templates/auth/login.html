@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>AeroParker Login Page </title>
+  <link rel="stylesheet" href="/css/log_menu.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title> AeroParker Login Page </title>
+  <head>
+	<meta charset="UTF-8">
+	<title>AnimaForm</title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+</head><link rel="stylesheet" href="/css/log_menu.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<section class="forms-section">
+  <h1 class="section-title">AeroParker</h1>
+
+  <!-- error message -->
+  <div th:if="${param.error}">
+    <div class="alert alert-danger">Bad credentials</div>
+  </div>
+
+  <!-- logout message -->
+  <div th:if="${param.logout}">
+    <div class="alert alert-info">Log out was successfully</div>
+  </div>
+
+  <div class="forms">
+    <div class="form-wrapper is-active">
+      <button type="button" class="switcher switcher-login">
+        Login
+        <span class="underline"></span>
+      </button>
+      <form class="form form-login" form th:action="@{/process_login}" th:method="POST">
+        <fieldset>
+          <legend>Please, enter your email and password for login.</legend>
+          <div class="input-block">
+            <label for="username">E-mail</label>
+            <input id="username" name="username" type="email" required>
+          </div>
+          <div class="input-block">
+            <label for="login-password">Password</label>
+            <input id="login-password" type="password" name="password" required>
+          </div>
+        </fieldset>
+        <button type="submit" class="btn-login">Login</button>
+      </form>
+    </div>
+    <div class="form-wrapper">
+      <button type="button" class="switcher switcher-signup">
+        Sign Up
+        <span class="underline"></span>
+      </button>
+
+      <form class="form form-signup" th:action="@{/auth/registration}" th:method="POST" th:object="${userModel}">
+        <fieldset>
+          <legend>Please, enter your email, password and password confirmation for sign up.</legend>
+
+          <div class="input-block">
+            <label for="email">E-mail</label>
+            <input id="email" type="email" required th:field="*{email}" minlength="5" maxlength="50"/>
+          </div>
+
+          <div class="input-block">
+            <label for="title">Title</label>
+            <select autofocus="autofocus" id="title" required th:field="*{title}">
+              <option th:each="title : ${T(com.techtask.user.model.Title).values()}"
+                      th:text="${title.getTitleValue()}" th:value="${title}">
+              </option>
+            </select>
+          </div>
+
+          <div class="input-block">
+            <label for="firstName">First Name</label>
+            <input autofocus="autofocus" id="firstName"
+                   minlength="2" maxlength="50" required th:field="*{firstName}"/>
+          </div>
+
+          <div class="input-block">
+            <label for="lastName">Last Name</label>
+            <input autofocus="autofocus" id="lastName"
+                   minlength="2" maxlength="50" required th:field="*{lastName}"/>
+          </div>
+
+          <div class="input-block">
+            <label for="addressLine1">Address Line 1</label>
+            <input autofocus="autofocus" id="addressLine1"
+                   maxlength="255" required th:field="*{addressLine1}"/>
+          </div>
+
+          <div class="input-block">
+            <label for="addressLine2">Address Line 2 (optional)</label>
+            <input autofocus="autofocus" id="addressLine2"
+                   maxlength="255" th:field="*{addressLine2}"/>
+          </div>
+
+          <div class="input-block">
+            <label for="city">City (optional)</label>
+            <input autofocus="autofocus" id="city"
+                   maxlength="50" th:field="*{city}"/>
+          </div>
+
+          <div class="input-block">
+            <label for="postcode">Postcode</label>
+            <input autofocus="autofocus" id="postcode"
+                   minlength="6" maxlength="10" th:field="*{postcode}"/>
+          </div>
+
+          <div class="input-block">
+            <label for="phoneNumber">Phone number (optional)</label>
+            <input autofocus="autofocus" id="phoneNumber"
+                   maxlength="20" th:field="*{phoneNumber}"/>
+          </div>
+
+          <div class="input-block">
+            <label for="sign-up-password">Password</label>
+            <input id="sign-up-password" type="password" required th:field="*{password}" minlength="8" maxlength="100">
+          </div>
+
+        </fieldset>
+        <button type="submit" id="login-submit" class="btn-signup">Proceed</button>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- partial -->
+  <script  src="/js/log_menu.js"></script>
+
+</body>
+</html>
+<!-- partial -->
+  <script  src="/js/log_menu.js"></script>
+
+</body>
+</html>

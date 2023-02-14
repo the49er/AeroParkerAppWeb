@@ -1,11 +1,11 @@
 package com.techtask.user.model;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-@AllArgsConstructor
+@RequiredArgsConstructor
 public enum Title {
     EMPTY("Prefer not to say"),
     MR("Mr"),

@@ -1,5 +1,3 @@
-CREATE SCHEMA IF NOT EXISTS aeroparker;
-USE aeroparker;
 CREATE TABLE IF NOT EXISTS users (
     id UUID PRIMARY KEY,
     registered DATE,

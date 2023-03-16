@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  app:
+    image: aero:app_01
+    restart: on-failure
+    ports:
+      - 9999:9999
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+      - MYSQL_DB=aero
+      - MYSQL_URL=jdbc:mysql://aero-mysql:3306
+    depends_on:
+      - aero-mysql
+
+  aero-mysql:
+    image: mysql:8.0
+    volumes:
+      - aero-mysql-data:/var/lib/mysql
+    restart: always
+    ports:
+      - 3308:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=aero
+      - MYSQL_PASSWORD=password
+volumes:
+  aero-mysql-data:

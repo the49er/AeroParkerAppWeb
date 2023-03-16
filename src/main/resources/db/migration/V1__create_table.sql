@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS users (
-    id UUID PRIMARY KEY,
+    id binary(36) PRIMARY KEY,
     registered DATE,
     email_address varchar(50) UNIQUE,
     title VARCHAR(5),
